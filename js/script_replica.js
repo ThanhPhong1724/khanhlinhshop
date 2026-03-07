@@ -178,10 +178,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 method: 'POST',
                 body: formData
             })
-                .then(res => res.text())
+                .then(res => res.json())
                 .then(data => {
-                    if (data.includes('lỗi') || data.toLowerCase().includes('error')) {
-                        alert('Lỗi: ' + data);
+                    if (!data.success) {
+                        // Display actual error messages if any
+                        const errorMsg = data.errors ? Object.values(data.errors).join('\\n') : data.message;
+                        alert('Lỗi: ' + errorMsg);
                     } else {
                         // Build redirect URL with order summary params
                         const nameVal = form.full_name.value.trim();
