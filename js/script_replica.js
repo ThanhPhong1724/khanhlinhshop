@@ -33,9 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const sizeOpts = document.querySelectorAll('.size-opt');
     sizeOpts.forEach(opt => {
-        opt.addEventListener('click', () => {
+        opt.addEventListener('click', (e) => {
             const input = opt.querySelector('input');
-            if (input) {
+            if (!input) return;
+
+            if (input.type === 'radio') {
                 const name = input.name;
                 document.querySelectorAll(`.size-opt input[name="${name}"]`).forEach(i => {
                     const l = i.closest('.size-opt');
@@ -43,6 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
                 opt.classList.add('selected');
                 input.checked = true;
+            } else if (input.type === 'checkbox') {
+                // If it's a checkbox (for colors), toggle the visual class
+                if (input.checked) {
+                    opt.classList.add('selected');
+                } else {
+                    opt.classList.remove('selected');
+                }
             }
         });
     });
@@ -147,8 +156,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const comboInfo = form.querySelector('input[name="combo"]:checked');
             if (!comboInfo) { showError('err-combo', 'Vui lòng chọn combo'); isValid = false; }
 
-            const colorInfo = form.querySelector('input[name="colors"]:checked');
-            if (!colorInfo) { showError('err-color', 'Vui lòng chọn màu sắc'); isValid = false; }
+            const colorInfos = form.querySelectorAll('input[name="colors[]"]:checked');
+            if (colorInfos.length === 0) { showError('err-color', 'Vui lòng chọn ít nhất 1 màu sắc'); isValid = false; }
 
             const sizeInfo = form.querySelector('input[name="size"]:checked');
             if (!sizeInfo) { showError('err-size', 'Vui lòng chọn kích thước'); isValid = false; }
@@ -189,7 +198,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         const nameVal = form.full_name.value.trim();
                         const phoneVal = form.phone_number.value.trim();
                         const comboVal = comboInfo ? comboInfo.value : '';
-                        const colorVal = colorInfo ? colorInfo.value : '';
+
+                        // Extract array of colors
+                        const colorsArray = Array.from(colorInfos).map(el => el.value);
+                        const colorVal = colorsArray.join(', ');
+
                         const sizeVal = sizeInfo ? sizeInfo.value : '';
 
                         const qs = new URLSearchParams({

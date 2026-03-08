@@ -357,12 +357,16 @@
                 <div class="form-group">
                     <label>Màu sắc <span style="color:red;">*</span></label>
                     <div class="size-options color-options" id="color-options">
-                        <label class="size-opt"><input name="colors" type="radio" value="Đen" /><span>Đen</span></label>
-                        <label class="size-opt"><input name="colors" type="radio"
+                        <label class="size-opt"><input name="colors[]" type="checkbox"
+                                value="Đen" /><span>Đen</span></label>
+                        <label class="size-opt"><input name="colors[]" type="checkbox"
                                 value="Trắng" /><span>Trắng</span></label>
-                        <label class="size-opt"><input name="colors" type="radio" value="Xám" /><span>Xám</span></label>
-                        <label class="size-opt"><input name="colors" type="radio" value="Rêu" /><span>Rêu</span></label>
-                        <label class="size-opt"><input name="colors" type="radio" value="Đỏ" /><span>Đỏ</span></label>
+                        <label class="size-opt"><input name="colors[]" type="checkbox"
+                                value="Xám" /><span>Xám</span></label>
+                        <label class="size-opt"><input name="colors[]" type="checkbox"
+                                value="Rêu" /><span>Rêu</span></label>
+                        <label class="size-opt"><input name="colors[]" type="checkbox"
+                                value="Đỏ" /><span>Đỏ</span></label>
                     </div>
                     <div class="err-msg" id="err-color"></div>
                 </div>
@@ -381,6 +385,9 @@
                     <div class="err-msg" id="err-size"></div>
                 </div>
                 <!-- Customer Data -->
+                <div
+                    style="margin: 20px 0 10px; font-weight: bold; border-bottom: 1px solid #eee; padding-bottom: 5px; color: #f42c4b;">
+                    Thông tin người nhận</div>
                 <div class="form-group">
                     <label>Họ và Tên <span style="color:red;">*</span></label>
                     <input class="input-field" name="full_name" placeholder="Nhập họ và tên..." type="text" />
