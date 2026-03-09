@@ -1,0 +1,8 @@
+{
+    "name": "khanhlinhshop",
+    "version": "1.0.0",
+    "description": "Khánh Linh Shop - Áo Min landing page",
+    "dependencies": {
+        "nodemailer": "^6.9.9"
+    }
+}

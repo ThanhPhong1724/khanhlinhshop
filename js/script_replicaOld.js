@@ -183,22 +183,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const formData = new FormData(form);
 
-            // Auto-detect hosting platform:
-            //   Vercel  → /api/order  (Node.js serverless)
-            //   Others  → process_order.php  (PHP hosting)
-            const isVercel = window.location.hostname.includes('vercel.app');
-            const endpoint = isVercel ? '/api/order' : 'process_order.php';
-
-            // For Vercel we send JSON; for PHP we keep FormData (multipart)
-            const fetchOpts = isVercel
-                ? {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(Object.fromEntries(formData)),
-                }
-                : { method: 'POST', body: formData };
-
-            fetch(endpoint, fetchOpts)
+            fetch('process_order.php', {
+                method: 'POST',
+                body: formData
+            })
                 .then(res => res.json())
                 .then(data => {
                     if (!data.success) {

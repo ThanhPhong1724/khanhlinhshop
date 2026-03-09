@@ -26,8 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // Bước 3: Dán mật khẩu đó vào dòng GMAIL_APP_PASSWORD bên dưới (thay chỗ xxxx)
 // =====================================================
 
-define('GMAIL_ADDRESS',      'ducanhga577@gmail.com');       // Email nhận đơn hàng
-define('GMAIL_APP_PASSWORD', 'ltib osji musw pvqz');       // ← DÁN APP PASSWORD VÀO ĐÂY
+define('GMAIL_ADDRESS',      'khanhlinh19695@gmail.com');       // Email nhận đơn hàng
+define('GMAIL_APP_PASSWORD', 'rfoq azmy nvaj mcmr');       // ← DÁN APP PASSWORD VÀO ĐÂY
 define('SHOP_NAME',          'Khánh Linh Shop');
 
 // =====================================================
